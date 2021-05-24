@@ -23,7 +23,8 @@ export default {
     }
   },
   watch: {
-    $route (){
+    $route () {
+      this.setLoadingChart()
       this.getVaccines()
     }
   },

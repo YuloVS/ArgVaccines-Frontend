@@ -17,7 +17,8 @@ export default {
     this.setLoadingChart()
   },
   watch: {
-    $route (){
+    $route () {
+      this.setLoadingChart()
       this.getData()
     }
   },
