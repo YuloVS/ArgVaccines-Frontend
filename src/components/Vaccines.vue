@@ -1,15 +1,5 @@
 <template>
-  <v-row>
-    <v-col md="6" :cols="12" class="sm6">
-      <h2 class="text-h5 font-weight-light">Vacunas utilizadas</h2>
-      <v-overlay
-          :absolute="true"
-          :value="loading">
-        <img class="mr-7" src="../assets/loading.gif" alt="Cargando...">
-      </v-overlay>
-      <div id="vaccineChart" style="width: auto; height:350px; margin-top: -55px" ></div>
-    </v-col>
-  </v-row>
+  <div id="vaccineChart" style="width: auto; height:350px; margin-top: -55px" ></div>
 </template>
 
 <script>
@@ -17,8 +7,7 @@ export default {
   name: "Vaccines",
   data() {
     return {
-      vaccines: [],
-      loading: true,
+      vaccines: []
     }
   },
   computed: {
@@ -35,7 +24,6 @@ export default {
   },
   watch: {
     $route (){
-      this.loading = true;
       this.getVaccines()
     }
   },
@@ -59,7 +47,6 @@ export default {
       Window.axios.get(url, params)
           .then(({data}) => {
             this.vaccines = data.data;
-            this.loading = false;
             this.drawChart();
           })
     },
@@ -89,7 +76,9 @@ export default {
             },
             data: this.transformData,
             label: {
-              show: false
+              show: true,
+              position: "inside",
+              formatter: "{c}"
             },
           }
         ],
