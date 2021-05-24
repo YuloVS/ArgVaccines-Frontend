@@ -13,6 +13,9 @@ export default {
   created() {
     this.getData()
   },
+  mounted() {
+    this.setLoadingChart()
+  },
   watch: {
     $route (){
       this.getData()
@@ -75,6 +78,21 @@ export default {
       };
       //Use the configuration items and data just specified to display the chart.
       myChart.setOption(option);
+      myChart.hideLoading()
+    },
+    setLoadingChart() {
+      let myChart = this.$echarts.init(document.getElementById("vaccineByAgeRangeChart"));
+      let options = {
+        text: 'Cargando...',
+        color: '#028baa',
+        textColor: '#028baa',
+        zlevel: 0,
+        fontSize: 112,
+        showSpinner: true,
+        spinnerRadius: 15,
+        fontFamily: 'sans-serif'
+      }
+      myChart.showLoading(options)
     }
   }
 }

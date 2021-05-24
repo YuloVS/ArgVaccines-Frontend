@@ -30,6 +30,9 @@ export default {
   created() {
     this.getVaccines();
   },
+  mounted() {
+    this.setLoadingChart()
+  },
   methods: {
     getVaccines() {
       let params = {};
@@ -86,6 +89,21 @@ export default {
       };
       //Use the configuration items and data just specified to display the chart.
       myChart.setOption(option);
+      myChart.hideLoading()
+    },
+    setLoadingChart() {
+      let myChart = this.$echarts.init(document.getElementById("vaccineChart"));
+      let options = {
+        text: 'Cargando...',
+        color: '#028baa',
+        textColor: '#028baa',
+        zlevel: 0,
+        fontSize: 112,
+        showSpinner: true,
+        spinnerRadius: 15,
+        fontFamily: 'sans-serif'
+      }
+      myChart.showLoading(options)
     },
     renameKey(object, key, newKey) {
       const clone = (obj) => Object.assign({}, obj);
