@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <navbar></navbar>
+    <navbar @provinceChanged="routeTo"></navbar>
     <!-- Sizes your content based upon application components -->
     <v-main>
 
@@ -21,6 +21,12 @@
 <script>
 import Navbar from "@/components/Navbar";
 export default {
-  components: {Navbar}
+  components: {Navbar},
+  methods: {
+    routeTo(province) {
+      if(!province) return
+      this.$router.push(province.replaceAll(" ", "_"))
+    }
+  }
 }
 </script>
