@@ -5,14 +5,14 @@
       <v-toolbar-title>
         <router-link to="/" style="text-decoration: none; color: black">
           <span>VACUNAS</span>
-          <span class="light-blue--text">ARGENTINA</span>
+          <span style="color: #028baa">ARGENTINA</span>
         </router-link>
       </v-toolbar-title>
     </v-app-bar>
     <v-navigation-drawer v-model="toggle" bottom app>
       <v-list nav>
         <v-list-item v-for="province in this.provinces" :key="province.id">
-          <v-btn rounded color="light-blue darken-1" dark router :to="selectProvince(province.name)">{{ province.name }}</v-btn>
+          <v-btn rounded color="light-blue darken-1" dark @click="toggle=!toggle" router :to="selectProvince(province.name)">{{ province.name }}</v-btn>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
