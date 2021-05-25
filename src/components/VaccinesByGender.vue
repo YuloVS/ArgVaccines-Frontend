@@ -1,10 +1,10 @@
 <template>
-  <div id="vaccineChart" style="width: auto; height:350px; margin-top: -55px" ></div>
+  <div id="vaccineByGender" style="width: auto; height:350px; margin-top: -35px" ></div>
 </template>
 
 <script>
 export default {
-  name: "Vaccines",
+  name: "VaccinesByGender",
   data() {
     return {
       vaccines: []
@@ -13,35 +13,35 @@ export default {
   computed: {
     transformData () {
       let data = this.vaccines.map(vaccine => this.renameKey(vaccine, "quantity", "value"));
-      if ("vaccine" in data[0]) {
-        data = data.map(vaccine => this.renameKey(vaccine, "vaccine", "name"))
+      if ("gender" in data[0]) {
+        data = data.map(vaccine => this.renameKey(vaccine, "gender", "name"))
       }
       else {
-        data = data.map(vaccine => this.renameKey(vaccine, "vaccinated_in_the_province", "name"))
+        data = data.map(vaccine => this.renameKey(vaccine, "vaccinated_in_the_province", "name")) // TODO CHECK
       }
       return data;
     }
   },
-  watch: {
-    $route () {
-      this.setLoadingChart()
-      this.getVaccines()
-    }
-  },
   created() {
-    this.getVaccines();
+    this.getData()
   },
   mounted() {
     this.setLoadingChart()
   },
+  watch: {
+    $route () {
+      this.setLoadingChart()
+      this.getData()
+    }
+  },
   methods: {
-    getVaccines() {
+    getData() {
       let params = {};
-      let url = "http://argvaccines.test/api/v1/vaccines";
+      let url = "http://argvaccines.test/api/v1/gender";
       let province = this.$route.fullPath.replaceAll("/", "").replaceAll("_", " ")
       if (province.length > 0)
       {
-        url = "http://argvaccines.test/api/v1/vaccination-province/vaccine"
+        url = "http://argvaccines.test/api/v1/vaccination-province/gender"
         params = {
           params: {
             vaccinated_in_the_province: province
@@ -56,7 +56,7 @@ export default {
     },
     drawChart() {
       //Initialize the echarts instance based on the prepared dom
-      let myChart = this.$echarts.init(document.getElementById("vaccineChart"));
+      let myChart = this.$echarts.init(document.getElementById("vaccineByGender"));
       //Specify configuration items and data for the chart
       let option = {
         tooltip: {
@@ -66,12 +66,13 @@ export default {
         legend: {
           padding: 1,
           top: "bottom",
-          data: this.vaccines.map(vaccine => vaccine.vaccine)
+          data: this.vaccines.map(vaccine => vaccine.gender)
         },
         series: [
           {
             type: "pie",
             radius: ['40%', '70%'],
+            roseType: 'radius',
             avoidLabelOverlap: false,
             itemStyle: {
               borderRadius: 10,
@@ -86,14 +87,14 @@ export default {
             },
           }
         ],
-        color: ['#84FFFF', '#81e8ff', '#028baa', '#4DB6AC']
+        color: ['#BA68C8', '#4FC3F7', '#90A4AE',]
       };
       //Use the configuration items and data just specified to display the chart.
       myChart.setOption(option);
       myChart.hideLoading()
     },
     setLoadingChart() {
-      let myChart = this.$echarts.init(document.getElementById("vaccineChart"));
+      let myChart = this.$echarts.init(document.getElementById("vaccineByGender"));
       let options = {
         text: 'Cargando...',
         color: '#028baa',

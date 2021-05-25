@@ -11,6 +11,15 @@
         <vaccines-by-age-range/>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col md="6" :cols="12">
+        <h2 class="text-h5 font-weight-light">Vacunacion por genero</h2>
+        <vaccines-by-gender/>
+      </v-col>
+      <v-col md="6" :cols="12">
+        <h2 class="text-h5 font-weight-light">Vacunacion por rango etario</h2>
+      </v-col>
+    </v-row>
     <v-overlay
         :absolute="false"
         :value="false">
@@ -24,9 +33,10 @@
 
 import Vaccines from "@/components/Vaccines";
 import VaccinesByAgeRange from "@/components/VaccinesByAgeRange";
+import VaccinesByGender from "@/components/VaccinesByGender";
 export default {
   name: 'Home',
-  components: {VaccinesByAgeRange, Vaccines},
+  components: {VaccinesByGender, VaccinesByAgeRange, Vaccines},
   computed: {
     message() {
       let province = this.$route.path.replaceAll("/", "").replaceAll("_", " ")
