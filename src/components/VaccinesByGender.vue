@@ -87,7 +87,7 @@ export default {
             },
           }
         ],
-        color: ['#BA68C8', '#4FC3F7', '#90A4AE',]
+        color: ['#BA68C8', '#028baa', '#90A4AE',]
       };
       //Use the configuration items and data just specified to display the chart.
       myChart.setOption(option);
