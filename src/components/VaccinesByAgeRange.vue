@@ -53,7 +53,6 @@ export default {
         },
         yAxis: {
           type: 'value',
-          name: "Cantidad",
           axisLabel: {
             formatter: function (value) { return value/1000000 + "M" },
             fontSize: 10

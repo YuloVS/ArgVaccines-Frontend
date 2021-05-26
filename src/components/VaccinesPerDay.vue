@@ -101,7 +101,8 @@ export default {
           type: 'category',
           nameLocation: 'middle',
           axisLabel: {
-            fontSize: 10
+            fontSize: 10,
+            formatter: (value) => this.$moment(value, "YYYYMMDD").format("MM-YY")
           }
         },
         yAxis: {

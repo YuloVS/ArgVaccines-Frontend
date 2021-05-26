@@ -3,10 +3,12 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './router'
 import axios from "axios";
-import echarts from "echarts"
+import echarts from "echarts";
+import moment from "moment";
 
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$axios = axios;
+Vue.prototype.$moment = moment;
 
 if (process.env.NODE_ENV === "production") axios.defaults.baseURL = process.env.VUE_APP_PUBLIC_API_URL;
 else axios.defaults.baseURL = process.env.VUE_APP_API_URL;
