@@ -54,13 +54,18 @@ export default {
         yAxis: {
           type: 'value',
           name: "Cantidad",
-          show: true,
-          position: "right",
-          offset: -4.5
+          axisLabel: {
+            formatter: function (value) { return value/1000000 + "M" },
+            fontSize: 10
+          },
+          position: "right"
         },
         xAxis: {
           type: 'category',
-          data: this.vaccines.map(vaccine => vaccine.vaccination_condition)
+          data: this.vaccines.map(vaccine => vaccine.vaccination_condition),
+          axisLabel: {
+            fontSize: 10
+          }
         },
         series: [{
           itemStyle: {

@@ -99,10 +99,18 @@ export default {
         },
         xAxis: {
           type: 'category',
-          nameLocation: 'middle'
+          nameLocation: 'middle',
+          axisLabel: {
+            fontSize: 10
+          }
         },
         yAxis: {
-          //name: '# Vacunas'
+          //name: '# Vacunas
+          axisLabel: {
+            formatter: function (value) { return value/1000 + "K" },
+            fontSize: 10
+          },
+          position: "right",
         },
         /*grid: {
           right: 400
