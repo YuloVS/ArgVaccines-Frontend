@@ -8,8 +8,10 @@ import echarts from "echarts"
 
 Vue.use(VCharts)
 Vue.prototype.$echarts = echarts;
+//Vue.prototype.$axios = axios;
 
 Window.axios = axios;
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 Vue.config.productionTip = false
 

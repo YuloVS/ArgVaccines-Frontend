@@ -61,7 +61,7 @@ export default {
     }
   },
   created() {
-    Window.axios.get("http://argvaccines.test/api/provinces")
+    Window.axios.get("api/provinces")
         .then((response) => {
           this.provinces = response.data
         })
