@@ -1,5 +1,5 @@
 <template>
-  <div id="vaccineChart" style="width: auto; height:350px; margin-top: -55px" ></div>
+  <div id="vaccineChart" style="width: auto; height:350px; margin-top: -35px" ></div>
 </template>
 
 <script>

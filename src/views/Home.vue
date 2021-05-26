@@ -1,29 +1,29 @@
 <template>
   <div class="home px-md-15 py-md-1">
-    <h1 class="text-h4 font-weight-medium" v-text="message"></h1>
+    <h1 class="text-h4 font-weight-medium text-center" v-text="message"></h1>
     <v-row>
       <v-col>
-        <h2 class="text-h5 font-weight-medium">Vacunación por día</h2>
+        <h2 class="text-h5 font-weight-medium text-center">Vacunación por día</h2>
         <vaccines-per-day/>
       </v-col>
     </v-row>
     <v-row>
       <v-col md="6" :cols="12">
-        <h2 class="text-h5 font-weight-medium">Vacunas utilizadas</h2>
+        <h2 class="text-h5 font-weight-medium text-center">Vacunas utilizadas</h2>
         <vaccines />
       </v-col>
       <v-col md="6" :cols="12">
-        <h2 class="text-h5 font-weight-medium">Vacunación por rango etario</h2>
+        <h2 class="text-h5 font-weight-medium text-center">Vacunación por rango etario</h2>
         <vaccines-by-age-range/>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="mt-md-8">
       <v-col md="6" :cols="12">
-        <h2 class="text-h5 font-weight-medium">Vacunación por genero</h2>
+        <h2 class="text-h5 font-weight-medium text-center">Vacunación por genero</h2>
         <vaccines-by-gender/>
       </v-col>
       <v-col md="6" :cols="12">
-        <h2 class="text-h5 font-weight-medium">Vacunación por condición</h2>
+        <h2 class="text-h5 font-weight-medium text-center">Vacunación por condición</h2>
         <vaccines-by-condition/>
       </v-col>
     </v-row>
