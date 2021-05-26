@@ -61,7 +61,7 @@ export default {
     }
   },
   created() {
-    Window.axios.get("api/provinces")
+    this.$axios.get("api/provinces")
         .then((response) => {
           this.provinces = response.data
         })

@@ -37,18 +37,18 @@ export default {
   methods: {
     getVaccines() {
       let params = {};
-      let url = "http://argvaccines.test/api/v1/vaccines";
+      let url = "api/v1/vaccines";
       let province = this.$route.fullPath.replaceAll("/", "").replaceAll("_", " ")
       if (province.length > 0)
       {
-        url = "http://argvaccines.test/api/v1/vaccination-province/vaccine"
+        url = "api/v1/vaccination-province/vaccine"
         params = {
           params: {
             vaccinated_in_the_province: province
           }
         }
       }
-      Window.axios.get(url, params)
+      this.$axios.get(url, params)
           .then(({data}) => {
             this.vaccines = data.data;
             this.drawChart();
