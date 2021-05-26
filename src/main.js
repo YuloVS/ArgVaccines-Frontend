@@ -8,7 +8,6 @@ import echarts from "echarts"
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$axios = axios;
 
-//Window.axios = axios;
 if (process.env.NODE_ENV === "production") axios.defaults.baseURL = process.env.VUE_APP_PUBLIC_API_URL;
 else axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
