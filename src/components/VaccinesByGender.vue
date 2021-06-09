@@ -38,7 +38,7 @@ export default {
     getData() {
       let params = {};
       let url = "api/v1/gender";
-      let province = this.$route.fullPath.replaceAll("/", "").replaceAll("_", " ")
+      let province = this.$route.fullPath.replaceAll("/", "")
       if (province.length > 0)
       {
         url = "api/v1/vaccination-province/gender"

@@ -3,7 +3,7 @@
     <h1 class="text-h4 font-weight-medium text-center" v-text="message"></h1>
     <p class="pa-2 text-subtitle-1 text-center pt-0 mb-1" style="color: #028baa">
       <v-icon color="#028baa">mdi-needle</v-icon>
-      {{ this.quantity }} vacunas aplicadas
+      {{ this.quantity }} vacunas aplicadas a oriundos
     </p>
     <v-row>
       <v-col>
@@ -90,7 +90,7 @@ export default {
       }
       this.$axios.get(url, params)
           .then((response) => {
-            this.quantity = response.data.data[0].quantity
+            this.quantity = response.data
           })
     }
   }
